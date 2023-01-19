@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Néstor
  * @since 1.0
  */
-public class HolaMundo {
+public class holaMundo {
 
 	public static void ejemplosComentarios() {
 		/*
