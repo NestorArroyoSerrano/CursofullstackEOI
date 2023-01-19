@@ -19,9 +19,22 @@ public class Ejercicios {
 	
 			
 	}
+	
+	public static void ejercicio2() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime un número");
+		int numero = sc.nextInt();
+		
+		if (numero%10==0) {
+			System.out.println("El número es múltiplo de 10");
+		} else {
+			System.out.println("El número no es múltiplo de 10");
+		}
+	}
 
 	public static void main(String[] args) {
-		ejercicio1();
+		//ejercicio1();
+		ejercicio2();
 
 	}
 
