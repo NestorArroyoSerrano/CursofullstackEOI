@@ -291,15 +291,33 @@ public class HolaMundo {
 	}
 	public static void ejercicio15() {
 		Scanner sc = new Scanner(System.in);
+		final double IVA = 0.21;
 		System.out.println("Producto 1:");
 		String producto1 = sc.nextLine();
 		System.out.println("Precio 1:");
-		double precio1 = sc.nextDouble();
+		double precio1 = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
 		
 		System.out.println("Producto 2:");
 		String producto2 = sc.nextLine();
 		System.out.println("Precio 2:");
-		double precio2 = sc.nextDouble();
+		double precio2 = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
+		
+		System.out.println("Producto 3:");
+		String producto3 = sc.nextLine();
+		System.out.println("Precio 3:");
+		double precio3 = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
+		
+		//impresión de datos
+		
+		System.out.printf("-------------------------------------------\n");
+		System.out.printf("%-15s%12s%12s\n", "NOMBRE", "PRECIO", "IVA");		
+		System.out.printf("%-15s%12.2f€%12.2f\n", producto1,precio1,precio1*(1+IVA));
+		System.out.printf("%-15s%11.2f€%12.2f\n", producto2,precio2,precio2*(1+IVA));
+		System.out.printf("%-15s%11.2f€%12.2f\n", producto3,precio3,precio3*(1+IVA));
+		sc.close();
 	}
 		
 	public static void main(String[] args) {
