@@ -115,6 +115,9 @@ public class Estructuras {
 		int descuento = edad>=18?5:20;
 		System.out.println(descuento);
 	}
+	
+	
+
 
 	public static void main(String[] args) {
 		// ejemploIf();
@@ -122,7 +125,7 @@ public class Estructuras {
 		// ejemploIfElseIfElse();
 		//ifElseIfSinElse();
 		//ejemploSwitch();
-		ejemploTernarias();
+		//ejemploTernarias();
 	}
 
 }
