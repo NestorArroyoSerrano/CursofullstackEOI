@@ -104,6 +104,7 @@ public class Estructuras {
 		sc.close();
 
 	}
+
 	public static void ejemploTernarias() {
 		int edad = 40;
 
@@ -141,31 +142,32 @@ public class Estructuras {
 		System.out.println("Cuesta " + euros + (euros != 1 ? "euros" : "euro"));
 
 	}
-	
+
 	public static void ejemploAmbitosVariables() {
 		int numero = 5;
 		int edad = 20;
-		
-		if(edad>18) {
-			//int numero=3;  // En Java da error
+
+		if (edad > 18) {
+			// int numero=3; // En Java da error
 			int valor = 4;
 			System.out.println(numero);
 		}
 		System.out.println("hola");
-		// System.out.println(valor);  // Da error porque la variable no existe fuera del if
+		// System.out.println(valor); // Da error porque la variable no existe fuera del
+		// if
 	}
-	
+
 	/**
 	 * Este programa se ejecuta hasta que el usuario adivine la contraseña
 	 */
 	public static void ejemploWhile1() {
-		Scanner sc = new Scanner (System.in);  // Para leer datos por pantalla
+		Scanner sc = new Scanner(System.in); // Para leer datos por pantalla
 		String password = "1234";
 		boolean adivina = false;
-		while(!adivina) {  // (adivina==false)
+		while (!adivina) { // (adivina==false)
 			System.out.println("Introduzca la contraseña:");
 			String respuesta = sc.nextLine();
-			if(respuesta.equals(password)) {
+			if (respuesta.equals(password)) {
 				adivina = true;
 			} else {
 				System.out.println("Fallaste.\nSigue intentándolo");
@@ -174,55 +176,56 @@ public class Estructuras {
 		System.out.println("Enhorabuena! acertaste.");
 		sc.close();
 	}
-	
+
 	/**
 	 * El programa permite adivinar la password en 3 oportunidades
 	 */
 	public static void ejemploWhile2() {
-		Scanner sc = new Scanner (System.in);  // Para leer datos por pantalla
+		Scanner sc = new Scanner(System.in); // Para leer datos por pantalla
 		String password = "1234";
 		int intentos = 0;
 		boolean adivina = false;
-		while(!adivina && intentos<3) {  // (adivina==false)			
-			System.out.println("Introduzca la contraseña (Tienes " + (3-intentos) + " intentos):" );
+		while (!adivina && intentos < 3) { // (adivina==false)
+			System.out.println("Introduzca la contraseña (Tienes " + (3 - intentos) + " intentos):");
 			String respuesta = sc.nextLine();
 			intentos++;
-			if(respuesta.equals(password)) {
+			if (respuesta.equals(password)) {
 				adivina = true;
 			} else {
 				System.out.println("Fallaste");
 			}
-		}		
-		System.out.println(adivina?"Acertaste":"Gastaste todas tus intentos");
-		
-		/*if(adivina) {  // (adivina==true)
-			System.out.println("Acertaste");
-		} else {
-			System.out.println("Gastaste todas tus intentos");
-		}*/
+		}
+		System.out.println(adivina ? "Acertaste" : "Gastaste todas tus intentos");
+
+		/*
+		 * if(adivina) { // (adivina==true) System.out.println("Acertaste"); } else {
+		 * System.out.println("Gastaste todas tus intentos"); }
+		 */
 		sc.close();
 	}
-		public static void acaboCurso() {
-			LocalDate fecha = LocalDate.now();  // día de hoy (23/01/2023)
-			while(fecha.isBefore(LocalDate.parse("2023-03-31"))){
-				if(fecha.getDayOfWeek()!=DayOfWeek.SATURDAY && fecha.getDayOfWeek()!=DayOfWeek.SUNDAY) {
-					System.out.println(fecha);
-				}			
-				fecha = fecha.plusDays(1); // suma un día
-			}
-			System.out.println("Has acabado el curso");
-		}
 
+	public static void acaboCurso() {
+		int diasQuedan = 0;
+		LocalDate fecha = LocalDate.now(); // día de hoy (23/01/2023)
+		while (fecha.isBefore(LocalDate.parse("2023-03-31"))) {
+			if (fecha.getDayOfWeek() != DayOfWeek.SATURDAY && fecha.getDayOfWeek() != DayOfWeek.SUNDAY) {
+				System.out.println(fecha);
+				diasQuedan++;
+			}
+			fecha = fecha.plusDays(1); // fecha = fecha + 1 dia;
+		}
+		System.out.println("Te quedan " + diasQuedan + " días");
+	}
 
 	public static void main(String[] args) {
 		// ejemploIf();
 		// ejemploIfElse();
 		// ejemploIfElseIfElse();
-		//ifElseIfSinElse();
-		//ejemploSwitch();
-		//ejemploTernarias();
+		// ifElseIfSinElse();
+		// ejemploSwitch();
+		// ejemploTernarias();
 		// ejemploAmbitosVariables();
-		//ejemploWhile1();
+		// ejemploWhile1();
 		ejemploWhile2();
 	}
 
