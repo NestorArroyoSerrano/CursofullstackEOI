@@ -1,5 +1,7 @@
 package estructuras;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Estructuras {
@@ -103,20 +105,113 @@ public class Estructuras {
 
 	}
 	public static void ejemploTernarias() {
-		int edad = 15;
+		int edad = 40;
+
 		/*
-		if(edad>=18)
-			System.out.println("Eres mayor de edad");
-		else
-			System.out.println("Eres menor de edad");
-		*/
-		System.out.println(edad>=18? "Eres mayor de edad":"Eres menor de edad");
-		
-		int descuento = edad>=18?5:20;
+		 * if(edad>=18) System.out.println("Eres mayor de edad"); else
+		 * System.out.println("Eres menor de edad");
+		 */
+
+		System.out.println(edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad");
+
+		/*
+		 * int descuento; if(edad>=18) { descuento=5; } else { descuento=20; }
+		 */
+
+		int descuento = edad >= 18 ? 5 : 20;
 		System.out.println(descuento);
+
+		/*
+		 * int tresValores; if(edad<18) { tresValores=1; } else if(edad>=18 && edad<=65)
+		 * { tresValores=2; } else { tresValores=3; }
+		 */
+
+		int tresValores = edad < 18 ? 1 : (edad >= 18 && edad <= 65) ? 2 : 3;
+
+		System.out.println("TresValores vale " + tresValores);
+
+		int euros = 10;
+		if (euros > 1) {
+			System.out.println("Cuesta " + euros + " euros");
+		} else {
+			System.out.println("Cuesta " + euros + " euro");
+		}
+
+		System.out.println("Cuesta " + euros + " euro" + (euros != 1 ? "s" : ""));
+		System.out.println("Cuesta " + euros + (euros != 1 ? "euros" : "euro"));
+
 	}
 	
+	public static void ejemploAmbitosVariables() {
+		int numero = 5;
+		int edad = 20;
+		
+		if(edad>18) {
+			//int numero=3;  // En Java da error
+			int valor = 4;
+			System.out.println(numero);
+		}
+		System.out.println("hola");
+		// System.out.println(valor);  // Da error porque la variable no existe fuera del if
+	}
 	
+	/**
+	 * Este programa se ejecuta hasta que el usuario adivine la contraseña
+	 */
+	public static void ejemploWhile1() {
+		Scanner sc = new Scanner (System.in);  // Para leer datos por pantalla
+		String password = "1234";
+		boolean adivina = false;
+		while(!adivina) {  // (adivina==false)
+			System.out.println("Introduzca la contraseña:");
+			String respuesta = sc.nextLine();
+			if(respuesta.equals(password)) {
+				adivina = true;
+			} else {
+				System.out.println("Fallaste.\nSigue intentándolo");
+			}
+		}
+		System.out.println("Enhorabuena! acertaste.");
+		sc.close();
+	}
+	
+	/**
+	 * El programa permite adivinar la password en 3 oportunidades
+	 */
+	public static void ejemploWhile2() {
+		Scanner sc = new Scanner (System.in);  // Para leer datos por pantalla
+		String password = "1234";
+		int intentos = 0;
+		boolean adivina = false;
+		while(!adivina && intentos<3) {  // (adivina==false)			
+			System.out.println("Introduzca la contraseña (Tienes " + (3-intentos) + " intentos):" );
+			String respuesta = sc.nextLine();
+			intentos++;
+			if(respuesta.equals(password)) {
+				adivina = true;
+			} else {
+				System.out.println("Fallaste");
+			}
+		}		
+		System.out.println(adivina?"Acertaste":"Gastaste todas tus intentos");
+		
+		/*if(adivina) {  // (adivina==true)
+			System.out.println("Acertaste");
+		} else {
+			System.out.println("Gastaste todas tus intentos");
+		}*/
+		sc.close();
+	}
+		public static void acaboCurso() {
+			LocalDate fecha = LocalDate.now();  // día de hoy (23/01/2023)
+			while(fecha.isBefore(LocalDate.parse("2023-03-31"))){
+				if(fecha.getDayOfWeek()!=DayOfWeek.SATURDAY && fecha.getDayOfWeek()!=DayOfWeek.SUNDAY) {
+					System.out.println(fecha);
+				}			
+				fecha = fecha.plusDays(1); // suma un día
+			}
+			System.out.println("Has acabado el curso");
+		}
 
 
 	public static void main(String[] args) {
@@ -126,6 +221,9 @@ public class Estructuras {
 		//ifElseIfSinElse();
 		//ejemploSwitch();
 		//ejemploTernarias();
+		// ejemploAmbitosVariables();
+		//ejemploWhile1();
+		ejemploWhile2();
 	}
 
 }
