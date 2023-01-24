@@ -440,7 +440,7 @@ public class Ejercicios {
 	public static void ejercicio21() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Dime un número");
-		int numero = sc.nextInt();
+		int numero = /*sc.nextInt();*/ Integer.parseInt(sc.nextLine()); //Para coger un número y asignarlo a una variable
 
 		for (int i = 1; i <= numero / 2; i++) {
 			if (numero % i == 0) {
@@ -448,6 +448,34 @@ public class Ejercicios {
 			}
 		}
 	}
+	public static void ejercicio22() {
+		for (int i=0; i<5; i++) {
+			for (int j=1; j<=9; j++) {
+				System.out.println(j);
+		}
+			
+			
+		}
+		
+	}
+	public static void ejercicio21Primos() {  // Resuelto con For
+		int contador = 0;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduzca un número");
+		int numero = Integer.parseInt(sc.nextLine());  // Para coger un número y asignarlo a una variable
+		for(int i=1;i<=numero;i++) { 
+			if(numero%i==0) {
+				contador++;
+			}
+		}	
+		if(contador==2 || numero==1) {
+			System.out.println("El número es primo");
+		} else {
+			System.out.println("El número no es primo");
+		}
+		sc.close();
+	}
+
 
 	public static void main(String[] args) {
 		// ejercicio1();
@@ -462,7 +490,7 @@ public class Ejercicios {
 		// ejercicio10();
 		// ejercicio11();
 		// ejercicio12();
-		ejercicio12b();
+		//ejercicio12b();
 		// ejercicio13();
 		// ejercicio14();
 		// ejercicio15();
@@ -471,7 +499,8 @@ public class Ejercicios {
 		// ejercicio18();
 		// ejercicio19();
 		// ejercicio20();
-		//ejercicio21();
+		ejercicio21();
+		//ejercicio22();
 
 	}
 

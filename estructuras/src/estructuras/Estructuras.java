@@ -2,6 +2,9 @@ package estructuras;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Estructuras {
@@ -203,6 +206,21 @@ public class Estructuras {
 		 */
 		sc.close();
 	}
+	public static void ejemploDoWhile3() {
+		Scanner sc = new Scanner(System.in);
+		int opcion=-1;
+		do {
+			System.out.println("1. Primera opción");
+			System.out.println("2. Segunda opción");
+			System.out.println("3. Tercera opción");
+			System.out.println("4. Cuarta opción");
+			System.out.println("0. Salir");
+			opcion=sc.nextInt();
+			sc.nextLine();
+			
+		}while(opcion!=0);
+		sc.close();
+	}
 
 	public static void acaboCurso() {
 		int diasQuedan = 0;
@@ -216,6 +234,39 @@ public class Estructuras {
 		}
 		System.out.println("Te quedan " + diasQuedan + " días");
 	}
+	public static void imprimirHoraFecha() {
+		// Java 8
+		LocalDate fecha = LocalDate.now();
+		LocalTime hora = LocalTime.now();
+		LocalDateTime fechaHora = LocalDateTime.now();
+		System.out.println(fecha);
+		System.out.println(hora);
+		System.out.println(fechaHora);
+		// Java 5
+		Date fechaJava5 = new Date(); // huid
+	}
+	public static void ejemploFor1() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println("Repetición número " + (i+1));
+		}
+	}
+	public static void ejemploFor2() { //Bucle infinito
+		for (;;) {
+			System.out.println("Repetición número ");
+		}
+	}
+	public static void ejemploForWhile() {
+		int i = 0;
+		while(i<10) {
+			System.out.println("Repetición numero " + (i));
+			i++;
+		}
+	}
+	public static void ejemploFor3() {
+		for (int i = 10; i>0; i--) {
+			System.out.println("Repetición número " + (i));
+		}
+	}
 
 	public static void main(String[] args) {
 		// ejemploIf();
@@ -226,7 +277,9 @@ public class Estructuras {
 		// ejemploTernarias();
 		// ejemploAmbitosVariables();
 		// ejemploWhile1();
-		ejemploWhile2();
+		//ejemploWhile2();
+		//ejemploFor1();
+		ejemploFor3();
 	}
 
 }
