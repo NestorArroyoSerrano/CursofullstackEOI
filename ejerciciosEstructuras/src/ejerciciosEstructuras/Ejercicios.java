@@ -309,39 +309,41 @@ public class Ejercicios {
 		final int PRECIO_ENTRADA = 50;
 		final int MAYORIA_EDAD = 18;
 		final int EDAD_JUBILACION = 65;
-		Scanner sc = new Scanner (System.in);  // Para leer datos por pantalla
-		double precioEntrada = PRECIO_ENTRADA;  // Precio estándar sin descuentos
-		double precioTotalGrupo = 0;  // Almacenará el precio total
+		Scanner sc = new Scanner(System.in); // Para leer datos por pantalla
+		double precioEntrada = PRECIO_ENTRADA; // Precio estándar sin descuentos
+		double precioTotalGrupo = 0; // Almacenará el precio total
 		System.out.println("¿Cuántos sois?");
-		int personas = sc.nextInt();  // Ya tengo las personas
+		int personas = sc.nextInt(); // Ya tengo las personas
 		sc.nextLine();
 		int personasAtendidas = 0;
-		while(personasAtendidas<personas) {
-			System.out.println("Datos de la persona " + (personasAtendidas+1));
+		while (personasAtendidas < personas) {
+			System.out.println("Datos de la persona " + (personasAtendidas + 1));
 			System.out.println("Introduzca su edad:");
 			int edad = sc.nextInt();
 			sc.nextLine();
-			precioEntrada = PRECIO_ENTRADA;  // Volver a poner el precio que toca para ver si se aplican descuentos
-			if(edad<MAYORIA_EDAD) {
-				precioEntrada = precioEntrada * (1-MENOR_EDAD);  
-			} else if(edad>=MAYORIA_EDAD && edad<EDAD_JUBILACION) {
+			precioEntrada = PRECIO_ENTRADA; // Volver a poner el precio que toca para ver si se aplican descuentos
+			if (edad < MAYORIA_EDAD) {
+				precioEntrada = precioEntrada * (1 - MENOR_EDAD);
+			} else if (edad >= MAYORIA_EDAD && edad < EDAD_JUBILACION) {
 				System.out.println("Es usted socio (sí/no):");
 				String respuesta = sc.nextLine();
-				if(respuesta.equalsIgnoreCase("si") || respuesta.equalsIgnoreCase("sí") || respuesta.equalsIgnoreCase("s")) {
+				if (respuesta.equalsIgnoreCase("si") || respuesta.equalsIgnoreCase("sí")
+						|| respuesta.equalsIgnoreCase("s")) {
 					precioEntrada = precioEntrada * (1 - DESCUENTO_SOCIO);
 				}
 			} else {
-				precioEntrada = precioEntrada * (1-DESCUENTO_JUBILADO);
+				precioEntrada = precioEntrada * (1 - DESCUENTO_JUBILADO);
 			}
 			precioTotalGrupo += precioEntrada;
-			System.out.println("Precio de la entrada de la persona " + (personasAtendidas+1) + " es " + precioEntrada);
+			System.out
+					.println("Precio de la entrada de la persona " + (personasAtendidas + 1) + " es " + precioEntrada);
 			System.out.println("Precio del grupo hasta el momento: " + precioTotalGrupo);
 			personasAtendidas++;
 		}
-				
+
 		System.out.println("El precio FINAL del grupo es: " + precioTotalGrupo);
 		sc.close();
-		
+
 	}
 
 	public static void ejercicio13() {
@@ -403,21 +405,31 @@ public class Ejercicios {
 	}
 
 	public static void ejercicio18() {
-		for (int i = 5; i <= 100; i += 5) {
+		for (int i = 0; i <= 100; i += 5) {
 			System.out.println(i);
 		}
 	}
+		public static void ejercicio18B() {
+			int i = 0;
+			while(i<=100) {
+				System.out.println(i);
+				i += 5;
+				
+			}
+		}
+	
 
 	public static void ejercicio19() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Dime un número");
 		int numero = sc.nextInt();
 
-		for (int i = 0; i < numero; i++) {
+		for (int i = 1; i < numero; i++) {
 			System.out.print(i + ",");
 
 		}
 		System.out.println(numero);
+		sc.close();
 	}
 
 	public static void ejercicio20() {
@@ -435,12 +447,14 @@ public class Ejercicios {
 			System.out.println("Total vale " + total);
 		}
 		System.out.println("Total vale " + total);
+
 	}
 
 	public static void ejercicio21() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Dime un número");
-		int numero = /*sc.nextInt();*/ Integer.parseInt(sc.nextLine()); //Para coger un número y asignarlo a una variable
+		int numero = /* sc.nextInt(); */ Integer.parseInt(sc.nextLine()); // Para coger un número y asignarlo a una
+																			// variable
 
 		for (int i = 1; i <= numero / 2; i++) {
 			if (numero % i == 0) {
@@ -448,27 +462,28 @@ public class Ejercicios {
 			}
 		}
 	}
+
 	public static void ejercicio22() {
-		for (int i=0; i<5; i++) {
-			for (int j=1; j<=9; j++) {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 1; j <= 9; j++) {
 				System.out.println(j);
+			}
+
 		}
-			
-			
-		}
-		
+
 	}
-	public static void ejercicio21Primos() {  // Resuelto con For
+
+	public static void ejercicio21Primos() { // Resuelto con For
 		int contador = 0;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduzca un número");
-		int numero = Integer.parseInt(sc.nextLine());  // Para coger un número y asignarlo a una variable
-		for(int i=1;i<=numero;i++) { 
-			if(numero%i==0) {
+		int numero = Integer.parseInt(sc.nextLine()); // Para coger un número y asignarlo a una variable
+		for (int i = 1; i <= numero; i++) {
+			if (numero % i == 0) {
 				contador++;
 			}
-		}	
-		if(contador==2 || numero==1) {
+		}
+		if (contador == 2 || numero == 1) {
 			System.out.println("El número es primo");
 		} else {
 			System.out.println("El número no es primo");
@@ -476,6 +491,90 @@ public class Ejercicios {
 		sc.close();
 	}
 
+	public static void ejemploContinue() {
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Introduzca la contraseña ");
+			String password = sc.nextLine();
+			if (password.contains("kk")) {
+				continue; // Si encuentra una palabra con kk SÍ ejecuta todo el bucle pero no lo que queda
+							// detrás del continue en esa iteración
+
+			}
+			// No se ejecuta si se ha ejecutado el continue
+			System.out.println("Gracias por introducir su contraseña. ");
+		}
+		sc.close();
+	}
+
+	public static void ejemploBreak() {
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Introduzca la contraseña ");
+			String password = sc.nextLine();
+			if (password.contains("kk")) {
+				break; // Si encuentra una palabra con kk ya no ejecuta más el bucle
+			}
+			// No se ejecuta si se ha ejecutado el continue
+			System.out.println("Gracias por introducir su contraseña. ");
+		}
+		sc.close();
+	}
+
+	public static void ejercicio23() {
+
+		for (int i = 9; i >= 1; i--) {
+			for (int j = 1; j <= i; j++) {
+				System.out.println(j);
+			}
+			System.out.println();
+
+		}
+	}
+
+	public static void ejercicio24() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número: ");
+		int num = Integer.parseInt(sc.nextLine());
+
+		for (int fila = 0; fila < num; fila++) {
+			for (int col = 0; col < num; col++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+	}
+
+	public static void ejercicio25() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número: ");
+		int num = sc.nextInt();
+
+		for (int i = 1; i <= num; i++) {
+			for (int j = 1; j <= i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+
+	public static void ejercicio26() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número: ");
+		int num = sc.nextInt();
+
+		for (int i = 1; i <= num; i++) {
+			for (int j = 1; j <= i; j++) {
+				if (j <= num - i) {
+					System.out.print("  ");
+				} else {
+
+					System.out.println("*");
+				}
+			}
+			System.out.println();
+		}
+	}
 
 	public static void main(String[] args) {
 		// ejercicio1();
@@ -490,17 +589,22 @@ public class Ejercicios {
 		// ejercicio10();
 		// ejercicio11();
 		// ejercicio12();
-		//ejercicio12b();
+		// ejercicio12b();
 		// ejercicio13();
 		// ejercicio14();
 		// ejercicio15();
 		// ejercicio16();
 		// ejercicio17();
-		// ejercicio18();
-		// ejercicio19();
+		//ejercicio18();
+		// ejercicio18B();
+		 ejercicio19();
 		// ejercicio20();
-		ejercicio21();
-		//ejercicio22();
+		// ejercicio21();
+		// ejercicio22();
+		// ejercicio23();
+		// ejercicio24();
+		// ejercicio25();
+		//ejercicio26();
 
 	}
 

@@ -267,6 +267,37 @@ public class Estructuras {
 			System.out.println("Repetición número " + (i));
 		}
 	}
+	public static void ejemploAnidadosTablasMultiplicar() {
+		 for (int tabla = 1; tabla <=5; tabla++) {
+			 for (int num = 1; num <=10; num++) {
+				 System.out.println(tabla + "x" + num + "=" + (tabla*num));
+			 }
+		 }
+	}
+	public static void ejemploAnidadosTablasMultiplicarB() {
+		 for (int tabla = 1; tabla <=5; tabla++) {
+			 System.out.println("Comienzo de la tabla del " + tabla);
+			 for (int num = 1; num <=10; num++) {
+				 System.out.println(tabla + "x" + num + "=" + (tabla*num));
+			 }
+		 }
+	}
+	public static void ejemploAnidadosTablasMultiplicarC() {
+		 for (int tabla = 1; tabla <=5; tabla++) {
+			 System.out.println("Comienzo de la tabla del " + tabla);
+			 for (int num = 1; num <=10; num++) {
+				 System.out.println(tabla + "x" + num + "=" + (tabla*num));
+			 }
+			 System.out.println("Fin de la tabla del " +tabla);
+		 }
+	}
+	public static void ejemploForComplejo () {
+		for (int i = 0, j = 10; i <= 10 && j > 5; i++, j--) { // 0+10, 1+9, 2+8, 3+7, 4+6
+
+			System.out.println(i + " + " + j + " = " + (i + j));
+
+			}
+	}
 
 	public static void main(String[] args) {
 		// ejemploIf();
@@ -279,7 +310,10 @@ public class Estructuras {
 		// ejemploWhile1();
 		//ejemploWhile2();
 		//ejemploFor1();
-		ejemploFor3();
+		//ejemploFor2();
+		//ejemploFor3();
+		//ejemploAnidadosTablasMultiplicar();
+		ejemploAnidadosTablasMultiplicarC();
 	}
 
 }
