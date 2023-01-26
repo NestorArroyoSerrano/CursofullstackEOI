@@ -1,6 +1,8 @@
 package arrays;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class MiArrays {
 
@@ -62,19 +64,107 @@ public class MiArrays {
 		}
 	}
 
-
+	public static void ejemploRedimension() {
+		String[] nombres = { "Juan", "Ana", "Pedro", "Eva", "Paco", "" };
+		nombres = Arrays.copyOf(nombres, 10);
+		for(int i = 0; i < nombres.length ; i++) {
+			if(nombres[i]!=null) 
+				System.out.println(nombres[i]  + " tiene " + nombres[i].length() + " letras");
+		}
+		// for-each
+		System.out.println("Comienzo del for-each");
+		for(String nombre : nombres) {
+			if(nombre!=null) 
+				System.out.println(nombre + " tiene " + nombre.length() + " letras");
+		}
+	}
+	
+	public static void ejemploAumentarUnoArray() {
+		Scanner sc = new Scanner(System.in);
+		String[] alumnos = { "Juan", "Ana", "Pedro", "Eva", "Paco"};
+		System.out.println("Introduzca el nuevo alumno:");
+		String nombreAlumno = sc.nextLine();
+		alumnos = Arrays.copyOf(alumnos, alumnos.length+1);  // Le da un tamaño de una unidad más al array
+		alumnos[alumnos.length-1] = nombreAlumno;  // Mete el nuevo dato en la última posición
+		for(String alumno : alumnos) {  // forEach
+			System.out.println(alumno);
+		}
+		Arrays.stream(alumnos).forEach(e->System.out.println(e));  // Programación funcional
+		sc.close();
+	}
+	
+	public static void ejemploStringJoin() {
+		String[] alumnos = { "Juan", "Ana", "Pedro", "Eva", "Paco"};
+		String cadenaAlumnos = String.join(",", alumnos);
+		System.out.println(cadenaAlumnos);
+	}
+	
+	public static void eliminarUnElementoArray() {
+		String[] alumnos = { "Juan", "Ana", "Pedro", "Eva", "Paco"};
+		alumnos = Arrays.copyOf(alumnos, alumnos.length-1);
+		for(String alumno : alumnos) {  // forEach
+			System.out.println(alumno);
+		}
+	}
+	
+	public static void ordenarArray() {
+		String[] alumnos = { "Juan", "Ana", "Pedro", "Eva", "Paco"};
+		Arrays.sort(alumnos);
+		System.out.println("Imprimir con for-each");
+		for(String alumno : alumnos) {  // forEach
+			System.out.println(alumno);
+		}
+		System.out.println("Imprimir con toString");
+		System.out.println(Arrays.toString(alumnos));  // Para ver el contenido de un array
+		
+		int[] numeros = {11,2,4,5,3,21,80};
+		Arrays.sort(numeros);
+		for(int numero : numeros) {  // forEach
+			System.out.println(numero);
+		}
+				
+	}
+	
+	public static void ordenarInverso() {
+		// Cadenas
+		String[] alumnos = { "Juan", "Ana", "Pedro", "Eva", "Paco"};
+		Arrays.sort(alumnos);  // De menor a mayor
+		for(String alumno : alumnos) {  // forEach
+			System.out.println(alumno);
+		}
+		// Orden mayor a menor
+		Collections.reverse(Arrays.asList(alumnos));
+		for(String alumno : alumnos) {  // forEach
+			System.out.println(alumno);
+		}
+		// Ahora con números
+		Integer[] numeros = {11,2,4,5,3,21,80};  // Integer es la clase Wrapper de int, Boxing
+		Arrays.sort(numeros);  // De menor a mayor
+		for(int numero : numeros) {  // forEach
+			System.out.println(numero);
+		}
+		Collections.reverse(Arrays.asList(numeros));
+		for(int numero : numeros) {  // forEach
+			System.out.println(numero);
+		}
+	}
 	public static void main(String[] args) {
 		// ejemploDeclaraciones();
 		// ejemploRecorrido();
-		long inicio = System.currentTimeMillis();
-		ejemploBusquedas1();
-		long fin = System.currentTimeMillis();
-		System.out.println("El proceso ha tardado: " + inicio + " " + fin + " " + (fin-inicio));
-		inicio = System.currentTimeMillis();
-		ejemploBusquedaFuncional();
-		fin = System.currentTimeMillis();
-		System.out.println("El proceso ha tardado: " + (fin-inicio));
-
+		// long inicio = System.currentTimeMillis();
+		// ejemploBusquedas1();
+		// long fin = System.currentTimeMillis();
+		// System.out.println("El proceso ha tardado: " + inicio + " " + fin + " " + (fin-inicio));
+		// inicio = System.currentTimeMillis();
+		// ejemploBusquedaFuncional();
+		// fin = System.currentTimeMillis();
+		// System.out.println("El proceso ha tardado: " + (fin-inicio));
+		// ejemploRedimension();
+		// ejemploAumentarUnoArray();
+		// ejemploStringJoin();
+		// eliminarUnElementoArray();
+		// ordenarArray();
+		ordenarInverso();
 	}
 
 }
