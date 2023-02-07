@@ -125,6 +125,169 @@ public class Ejercicios {
 		}
 	}
 
+	public static void ejercicio13() { // Realiza una aplicación que nos pida un número de ventas a introducir, después
+										// nos pedirá tantas ventas por teclado
+		// como número de ventas se hayan indicado. Al final mostrará la suma de todas
+		// las ventas. Piensa que es lo que se repite y lo que no.
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce el número de ventas");
+		int numVentas = sc.nextInt();
+
+		/*
+		 * Declaramos una variable para sumar las ventas, si lo declaramos dentro del
+		 * bucle, no podriamos acceder fuera del bucle a la suma de las ventas. Esto es
+		 * por el ámbito.
+		 */
+		int sumaVentas = 0;
+		for (int i = 0; i < numVentas; i++) {
+			// indico el numero de venta
+			System.out.println("Introduce el precio de la venta " + (i + 1));
+			int venta = sc.nextInt();
+
+			// Acumulamos el valor de la venta
+			sumaVentas = sumaVentas + venta;
+		}
+
+		System.out.println(sumaVentas);
+	}
+
+	public static void ejercicio14() { // Realiza una aplicación que nos calcule una ecuación de segundo grado. Debes
+										// pedir las variables a, b y c por teclado y comprobar antes que el
+		// discriminante (operación en la raíz cuadrada). Para la raíz cuadrada usa el
+		// método sqlrt de Math. Te recomiendo que uses mensajes de traza.
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce el valor de a");
+		int a = sc.nextInt();
+		System.out.println("Introduce el valor de b");
+		int b = sc.nextInt();
+		System.out.println("Introduce el valor de c");
+		int c = sc.nextInt();
+
+		double discriminante = Math.pow(b, 2) - (4 * a * c);
+
+		// Mensaje de traza
+		System.out.println(">>" + discriminante);
+
+		if (discriminante > 0) {
+			// Tambien se puede hacer por parte si lo ves más facil
+			// recuerda que debes tener en cuenta la prioridad de elementos
+			double x1 = ((b * (-1)) + Math.sqrt(discriminante)) / (2 * a);
+			double x2 = ((b * (-1)) - Math.sqrt(discriminante)) / (2 * a);
+
+			System.out.println("El valor de x1 es " + x1 + " y el valor de x2 es " + x2);
+		} else {
+			System.out.println("El discriminante es negativo");
+		}
+	}
+
+	public static void ejercicio15() { // Lee un número por teclado y comprueba que este numero es mayor o igual que
+										// cero, si no lo es lo volverá
+		// a pedir (do while), después muestra ese número por consola.
+		int codigo;
+
+		Scanner sc = new Scanner(System.in);
+
+		do {
+			System.out.println("Introduce un número mayor que 0");
+			codigo = Integer.parseInt(sc.nextLine());
+		} while (codigo <= 0);
+
+		System.out.println(codigo);
+	}
+
+	public static void ejercicio16() { // Escribe una aplicación con un String que contenga una contraseña cualquiera.
+										// Después se te pedirá que introduzcas la contraseña, con 3 intentos. Cuando
+										// aciertes ya no pedirá mas la contraseña y mostrara un
+		// mensaje diciendo «Enhorabuena». Piensa bien en la condición de salida (3
+		// intentos y si acierta sale, aunque le queden intentos)
+		Scanner sc = new Scanner(System.in);
+		String contra = "1234";
+		final int INTENTOS = 3;
+
+		boolean acierto = false;
+
+		for (int i = 0; i < INTENTOS; i++) {
+			System.out.println("Introduce contraseña");
+			String password = sc.nextLine();
+
+			if (password.equals(contra)) {
+				System.out.println("Enhorabuena, has acertado");
+				acierto = true;
+			} else {
+				System.out.println("Has fallado");
+			}
+		}
+	}
+
+	public static void ejercicio17() { // Crea una aplicación que nos pida un día de la semana y que nos diga si es un
+										// dia laboral o no. Usa un switch para ello.
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime un día de la semana");
+		int dia = sc.nextInt();
+
+		switch (dia) {
+		case 1:
+			System.out.println("El día es el lunes");
+			break;
+		case 2:
+			System.out.println("El día es el martes");
+			break;
+		case 3:
+			System.out.println("El día es el miércoles");
+			break;
+		case 4:
+			System.out.println("El día es el jueves");
+			break;
+		case 5:
+			System.out.println("El día es el viernes");
+			break;
+		case 6:
+			System.out.println("El día es el sábado");
+			break;
+		case 7:
+			System.out.println("El día es el domingo");
+			break;
+			default:
+				System.out.println("Introduce un número del 1 al 7");
+		}
+	}
+	public static void ejercicio18() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime un número");
+		int numero1 = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Dime otro número");
+		int numero2 = sc.nextInt();
+		sc.nextLine();
+		
+		for (int i = 0; i<10; i++) {
+			int numeroAleatorio =(int)Math.floor(Math.random()*(numero1-numero2)+numero2);
+			System.out.println(numeroAleatorio);
+		}
+		
+	}
+	public static void ejercicio19() {
+		Scanner sc = new Scanner(System.in);
+        int numero=0;
+        do{
+            System.out.println("Introduce un numero");
+            numero=sc.nextInt();
+        }while(numero<0); int contador=0; for (int i=numero;i>0;i/=10){
+            //Incrementamos el contador
+            contador++;
+        }
+  
+        //Controlamos en el caso de que haya una cifra o mas
+        if (contador==1){
+            System.out.println("El numero "+numero+ " tiene "+contador+" cifra");
+        }else{
+            System.out.println("El numero "+numero+ " tiene "+contador+" cifras");
+        }
+  
+    }
+
+
 	public static void main(String[] args) {
 		// ejercicio1();
 		// ejercicio2();
@@ -135,8 +298,15 @@ public class Ejercicios {
 		// ejercicio8();
 		// ejercicio9();
 		// ejercicio10();
-		//ejercicio11();
-		ejercicio12();
+		// ejercicio11();
+		// ejercicio12();
+		// ejercicio13();
+		// ejercicio14();
+		// ejercicio15();
+		//ejercicio16();
+		//ejercicio17();
+		//ejercicio18();
+		ejercicio19();
 
 	}
 
