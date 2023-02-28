@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import com.nestor.json.entidades.Films;
 import com.nestor.json.entidades.People;
 import com.nestor.json.entidades.Posts;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class JsonUtils {
 	
@@ -164,20 +166,91 @@ public class JsonUtils {
 
 	}
 	
+	// Deprecated
 	public static People leerPersonaje(String url) {		
 		return new Gson().fromJson(InternetUtils.readUrl(url), People.class);
 	}
+	
+	// Deprecated
 	public static Films leerFilm(String url) {		
 		return new Gson().fromJson(InternetUtils.readUrl(url), Films.class);
 	}
 	
+	public static <T> T leerObjeto(String url, Class<T> clase) {
+		return new Gson().fromJson(InternetUtils.readUrl(url), clase);
+	}
 	
+	public static <T> T leerObjetoConToken(String url,String token, Class<T> clase) {
+		return new Gson().fromJson(InternetUtils.readUrl(url,token), clase);
+	}
+	
+	// Deprecated
 	public static List<People> leerPersonajes(String comienzoCadena, int numInicio, int numFin, String finCadena){
 		List<People> resultado = new ArrayList<People>();
 		for(int i=numInicio;i<=numFin;i++) {
 			resultado.add(leerPersonaje(comienzoCadena + i + finCadena));
 		}
 		return resultado;
+	}
+	
+	public static <T> List<T> leerObjetos(String comienzoCadena, int numInicio, int numFin, String finCadena,Class<T> clase){
+		List<T> resultado = new ArrayList<T>();
+		for(int i=numInicio;i<=numFin;i++) {
+			resultado.add(leerObjeto(comienzoCadena + i + finCadena,clase));
+		}
+		return resultado;
+	}
+	/*
+	 * Este es un método estático que se puede utilizar para leer y convertir un objeto en formato JSON desde una URL en línea en un objeto de tipo Java. 
+	 * La descripción detallada del método es la siguiente:
+La declaración del método comienza con "public static <T> T", lo que significa que este método es genérico y toma un parámetro de tipo "T". 
+"T" se refiere a un tipo genérico que se especificará más adelante en el código, y que puede ser cualquier tipo de objeto de Java.
+El nombre del método es "leerObjeto", lo que indica que este método está diseñado para leer y convertir un objeto desde una URL.
+El método tiene dos parámetros: "url" de tipo String, que representa la URL del objeto JSON a leer, y "clase" de tipo Class<T>, 
+que representa la clase de Java a la que se desea convertir el objeto JSON leído.
+Dentro del cuerpo del método, se utiliza la biblioteca Gson para leer y convertir el objeto JSON. 
+Primero, se llama al método "readUrl" de la clase "InternetUtils" para leer el contenido de la URL y devolver una cadena JSON.
+Luego, se utiliza el método "fromJson" de la biblioteca Gson para convertir la cadena JSON en un objeto de la clase especificada en el parámetro "clase". 
+El resultado de la conversión se devuelve como un objeto de tipo "T", que se especificó como el tipo de retorno del método en la declaración.
+Finalmente, el método devuelve el objeto de tipo "T" que representa el objeto JSON convertido.
+En resumen, este método genérico utiliza la biblioteca Gson para leer y convertir un objeto JSON desde una URL en un objeto de la clase especificada y lo devuelve como un objeto de tipo genérico "T".
+
+
+
+
+
+	 */
+	/**
+	 * Método genérico que dada una url con un json donde se encuentra un array de objetos
+	 * devuelve una lista de este tipo de objetos que contiene todos los objetos del array.
+	 * Ejemplo de llamada: JsonUtils.devolverArrayGsonGenerico("https://jsonplaceholder.typicode.com/posts",Posts[].class);
+	 * @param <T> Nombre de la clase genérica
+	 * @param url Url de la web donde está el array en formato json
+	 * @param clase Array de elementos del tipo de la clase
+	 * @return Lista de elementos de esa clase
+	 */
+	public static <T> List<T> devolverArrayGsonGenerico(String url, Class<T[]> clase){
+		return Arrays.asList(new Gson().fromJson(InternetUtils.readUrl(url), clase));
+	}
+	
+	/**
+	 * Creamos un String con un json a partir de un objeto
+	 * @param <T> tipo del objeto
+	 * @param object nombre de la variable
+	 * @return String con el Json devuelto
+	 */
+	public static <T> String crearJson(T object) {
+		return new Gson().toJson(object);
+	}
+	
+	/**
+	 * Creamos un String con un json en formato amigable a partir de un objeto
+	 * @param <T> tipo del objeto
+	 * @param object nombre de la variable
+	 * @return String con el Json devuelto
+	 */
+	public static <T> String crearJsonPretty(T object) {
+		return new GsonBuilder().setPrettyPrinting().create().toJson(object);
 	}
 	
 }
