@@ -8,17 +8,20 @@ public class Cliente {
 	private String dniCif;
 	private String nombre;
 	private LocalDate fechaNacimiento;
+	private String codigoPais;
 	private double saldo;
+	static final String ruta = "C:\\Users\\Néstor\\Documents\\FullstackEOI\\CursofullstackEOI\\ejercicioFFC\\src\\main\\java\\ficheros";
 	
 	public Cliente () {
 		
 	}
 
-	public Cliente(String dniCif, String nombre, LocalDate fechaNacimiento, double saldo) {
+	public Cliente(String dniCif, String nombre, LocalDate fechaNacimiento, String codigoPais, double saldo) {
 		super();
 		this.dniCif = dniCif;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
+		this.codigoPais = codigoPais;
 		this.saldo = saldo;
 	}
 	public Cliente(Cliente c) {
@@ -26,15 +29,16 @@ public class Cliente {
 		this.dniCif = c.dniCif;
 		this.nombre = c.nombre;
 		this.fechaNacimiento = c.fechaNacimiento;
+		this.codigoPais = c.codigoPais;
 		this.saldo = c.saldo;
 	}
 
-	public String getDni() {
+	public String getDniCif() {
 		return dniCif;
 	}
 
-	public void setDni(String dni) {
-		this.dniCif = dni;
+	public void setDniCif(String dniCif) {
+		this.dniCif = dniCif;
 	}
 
 	public String getNombre() {
@@ -53,6 +57,14 @@ public class Cliente {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	public String getCodigoPais() {
+		return codigoPais;
+	}
+
+	public void setCodigoPais(String codigoPais) {
+		this.codigoPais = codigoPais;
+	}
+
 	public double getSaldo() {
 		return saldo;
 	}
@@ -63,8 +75,8 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [dniCif=" + dniCif + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", saldo="
-				+ saldo + "]";
+		return "Cliente [dniCif=" + dniCif + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento
+				+ ", codigoPais=" + codigoPais + ", saldo=" + saldo + "]";
 	}
 
 	@Override
@@ -82,7 +94,10 @@ public class Cliente {
 			return false;
 		Cliente other = (Cliente) obj;
 		return Objects.equals(dniCif, other.dniCif);
-	}
+	}	
 }
+	
+
+
 
 
