@@ -11,7 +11,7 @@ import java.util.List;
 import com.nestor.jdbc.entidades.Tabla1;
 
 public class JdbcUtils {
-
+	
 	final static String URI = "jdbc:mysql://localhost:3306/jdbc";
 	final static String USER = "root";
 	final static String PASSWORD = "";
@@ -20,10 +20,9 @@ public class JdbcUtils {
 	public static Statement st;
 	public static ResultSet rs;
 	
-	
 	/**
-	 * Método que conecta con la base de datos
-	 * @return True si conecta correctamente. False si falla la conexión.
+	 * Método que conecta con la base de datos.
+	 * @return True si conecta correctamente, False si falla la conexión
 	 */
 	public static boolean conexion() {
 		con = null;
@@ -32,13 +31,13 @@ public class JdbcUtils {
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
 		}
 		return false;
 	}
+	
 	/**
-	 * Método que desconecta de la base de datos.
-	 * @return True si desconecta correctamente. False si falla la desconexión.
+	 * Método que desconecta con la base de datos.
+	 * @return True si desconecta correctamente, False si falla la desconexión
 	 */
 	public static boolean desconexion() {
 		try {
@@ -52,25 +51,27 @@ public class JdbcUtils {
 		return false;
 	}
 	
+
 	public static void selectBasica() {
 		String sql = "SELECT * FROM tabla1";
-		int registros = 0; // En esta variable iremos llevando el contador de los resultados
+		int registros = 0; //  en esta variable iremos llevando el contador del número de resultados
 		try {
-			st = con.createStatement(); // Poder hacer una consulta sobre la conexión
-			rs = st.executeQuery(sql); // Ejecuta la consulta yd evuelve los resultados
-			while(rs.next()) {		// mientras hay resultados, los vamos recorriendo
+			st = con.createStatement();  // Poder hacer una consulta sobre la conexión
+			rs = st.executeQuery(sql);   // Ejecuta la consulta y devuelve los resultados
+			while(rs.next()) {  		 // mientras hay resultados, los vamos recorriendo
 				registros++;
 				System.out.println("ID: " + rs.getInt("id") + " Nombre: " + rs.getString("nombre"));
 				//System.out.println("ID: " + rs.getInt(1) + " Nombre: " + rs.getString(2));
 			}
-			System.out.println("El número de resultados es:" +registros);
-			rs.close(); // Cerramos ResultSet
-			st.close(); // Cerramos Statement
+			System.out.println("El número de resultados es: " + registros);
+			rs.close();  // Cerramos ResultSet
+			st.close();	 // Cerramos Statement
 			
-		} catch (SQLException e) {			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
 	public static List<Tabla1> devolverRegistrosTabla1() {
 		List<Tabla1> resultado = new ArrayList<Tabla1>();
 		String sql = "SELECT * FROM tabla1";
@@ -90,17 +91,35 @@ public class JdbcUtils {
 	}
 	
 	/**
-	 * Dada una sentencia sql devuelve un ResulSet con el contenido de los datos solicitados 
+	 * Dada una sentencia sql devuelve un ResultSet con el contenido de los datos solicitados
 	 * @param sql. Sentencia SELECT que solicita información
 	 * @return ResultSet con los resultados o NULL si la sql es incorrecta
 	 */
 	public static ResultSet devolverResultSet(String sql) {
 		try {
 			st = con.createStatement();  
-			return st.executeQuery(sql);   		
+			return st.executeQuery(sql);   			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return null;
+			return null;
+		}		
 	}
+	
+	/**
+	 * Dada una sentencia de modificación de datos (Insert, Update o Delete)
+	 * la ejecuta sobre la Base de Datos y me devuelve el número de registros afectados
+	 * @param sql Sentencia de modificación
+	 * @return Número de registros afectados. En caso de error devolveré -1.
+	 */
+	public static int statementDML(String sql) {
+		try {
+			st = con.createStatement();  
+			return st.executeUpdate(sql);   			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	
 }
