@@ -175,11 +175,30 @@ public class JsonUtils {
 	public static Films leerFilm(String url) {		
 		return new Gson().fromJson(InternetUtils.readUrl(url), Films.class);
 	}
+	/**
+	 * Metódo genérico que dada una url con un json donde se encuentra un objeto
+	 * devuelve un objeto de la clase asociada.
+	 * Ejemplo de llamada: JsonUtils.devolverObjetoGsonGenerico("https://swapi.dev/api/people/1/?format=json",People2.class)
+	 * @param <T> Nombre de la clase
+	 * @param url
+	 * @param clase Clase con la que trabajaremos
+	 * @return
+	 */
 	
 	public static <T> T leerObjeto(String url, Class<T> clase) {
 		return new Gson().fromJson(InternetUtils.readUrl(url), clase);
 	}
 	
+	/**
+	 * Metódo genérico que dada una url con un json donde se encuentra un objeto
+	 * devuelve un objeto de la clase asociada.
+	 * Ejemplo de llamada: JsonUtils.devolverObjetoGsonGenerico("https://swapi.dev/api/people/1/?format=json",People2.class)
+	 * @param <T> Nombre de la clase
+	 * @param token Token de la API a la que nos conectamos
+	 * @param url
+	 * @param clase Clase con la que trabajaremos
+	 * @return
+	 */
 	public static <T> T leerObjetoConToken(String url,String token, Class<T> clase) {
 		return new Gson().fromJson(InternetUtils.readUrl(url,token), clase);
 	}
@@ -192,6 +211,19 @@ public class JsonUtils {
 		}
 		return resultado;
 	}
+	/**
+	 * Metódo genérico que dada una url con un json donde se encuentra un objeto
+	 * y un número inicial y final devuelve una lista de objetos de la clase asociada
+	 * con sucesivas llamadas a la API
+	 * Ejemplo de llamada: JsonUtils.leerObjetos("https://swapi.dev/api/films/", 1, 5, "?format=json", Films.class)
+	 * @param <T> Nombre de la clase
+	 * @param comienzoCadena Parte inicial de la url antes del número del elemento
+	 * @param numInicio Elemento inicial a partir del que queremos rellenar la lista
+	 * @param numFin Elemento final a partir del que queremos rellenar la lista
+	 * @param finCadena Parte final de la url después del número del elemento
+	 * @param clase Clase con la que trabajaremos
+	 * @return
+	 */
 	
 	public static <T> List<T> leerObjetos(String comienzoCadena, int numInicio, int numFin, String finCadena,Class<T> clase){
 		List<T> resultado = new ArrayList<T>();
