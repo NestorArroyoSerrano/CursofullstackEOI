@@ -77,19 +77,36 @@ public class App
 		try {
 			con = DriverManager.getConnection(URI, USER, PASSWORD);
 			st = con.createStatement();
-			
+			st.executeUpdate("DELETE FROM personaje");  // Borrar todos los datos de la tabla. Esto lo haremos pruebas y luego lo quitaremos
 			for(Personaje personaje : personajes) {
-				sql = "INSERT INTO personaje(id,name) VALUES('" +
-						personaje.getId() + "','" +
-						personaje.getName() +
-						"');";
-				System.out.println(sql);
+				personaje.setActor(personaje.getActor().replace("'", "''")); // Esto evita el error al intentar intoducir O'Farrell
+				 sql = "INSERT INTO personaje("
+				 + "id, name, species, gender, house, dateOfBirth, yearOfBirth, wizard, ancestry,"
+				 + "eyeColour, hairColour, patronus, hogwartsStudent, hogwartsStaff, actor, alive, image"
+				 + ") VALUES('"
+				 +personaje.getId()+"','"
+				 +personaje.getName()+"','"
+				 +personaje.getSpecies()+"','"
+				 +personaje.getGender()+"','"
+				 +personaje.getHouse()+"',"
+				 +((personaje.getDateOfBirthLD()!=null)?"'"+personaje.getDateOfBirthLD()+"'":"NULL")+","
+				 +((personaje.getYearOfBirth()!=null)?"'"+personaje.getYearOfBirth()+"'":"NULL")+",'"
+				 +((personaje.getWizard())?1:0)+"','"
+				 +personaje.getAncestry()+"','"
+				 +personaje.getEyeColour()+"','"
+				 +personaje.getHairColour()+"','"
+				 +personaje.getPatronus()+"','"
+				 +((personaje.getHogwartsStudent())?1:0)+"','"
+				 +((personaje.getHogwartsStaff())?1:0)+"','"
+				 +personaje.getActor()+"','"
+				 +((personaje.getAlive())?1:0)+"','"
+				 +personaje.getImage()+"');";
+				System.out.println(sql);  // En pruebas. Luego la comentamos
 				st.executeUpdate(sql);
 			}
 			
 			st.close();
 			con.close();
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
