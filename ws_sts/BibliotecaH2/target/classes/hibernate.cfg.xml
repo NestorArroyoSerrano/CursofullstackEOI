@@ -8,5 +8,7 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bibliotecah2</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping resource="com/nestor/BibliotecaH2/entidades/Autores.hbm.xml"/>
+        <mapping resource="com/nestor/BibliotecaH2/entidades/Libros.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
