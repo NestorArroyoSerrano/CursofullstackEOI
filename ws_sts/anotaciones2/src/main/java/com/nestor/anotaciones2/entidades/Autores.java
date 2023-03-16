@@ -21,11 +21,10 @@ import jakarta.persistence.Table;
 @Table(name = "autores")
 public class Autores implements java.io.Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 	private String cod;
 	private String nombre;
-	private Set <Libros>libroses = new HashSet<Libros>(0);
+	private Set<Libros> libroses = new HashSet<Libros>(0);
 
 	public Autores() {
 	}
@@ -71,5 +70,13 @@ public class Autores implements java.io.Serializable {
 	public void setLibroses(Set<Libros> libroses) {
 		this.libroses = libroses;
 	}
+
+	@Override
+	public String toString() {
+		return "Cod: " + cod + " Nombre: " + nombre;
+	}
+	
+	
+	
 
 }
