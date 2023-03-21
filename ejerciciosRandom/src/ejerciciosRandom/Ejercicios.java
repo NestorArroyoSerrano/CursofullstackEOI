@@ -1,5 +1,9 @@
 package ejerciciosRandom;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ejercicios {
@@ -286,6 +290,124 @@ public class Ejercicios {
         }
   
     }
+	public static void dibujaAsteriscos(int n) {
+		
+		for (int i=0; i<n; i++) {
+			System.out.print("*");
+		}
+	}
+	
+	public static void recibeCadena (String cadena, int n1, int n2) {
+		System.out.println(cadena.length()>=n1 && cadena.length()<=n2?
+				"Sí está entre los dos valores" : "No está entre los 2 valores");
+	}
+	
+	public static void dibujaCuadrado(char c, int n) {
+		for (int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
+				System.out.print(c);
+			}
+			System.out.println();
+		}
+	}
+	public static void mostrarTrabajo(String nombre, String...trabajos) {
+		
+		System.out.println(nombre +":");
+		if(trabajos.length==0) {
+			System.out.println("Esta persona no ha trabajado nunca");
+		}else {
+			for(int i=0; i<trabajos.length; i++) {
+				System.out.println(trabajos[i]);
+			}
+			
+		}
+	
+	}
+	public static boolean esPrimo(int numero) {
+		
+		boolean primo = true;
+		for(int i=2;i<numero/2 && primo; i++) {
+			
+			if(numero%i==0) 
+				primo=false;
+			}
+		return primo;
+			}
+		
+	public static int alReves(int numero) {
+		
+		String cadena= numero+"";
+		String nuevaCadena= "";
+		for(int i=0; i<cadena.length(); i++) {
+			
+			nuevaCadena=cadena.charAt(i)+nuevaCadena;			
+		}
+		return Integer.parseInt(nuevaCadena);
+	}
+	public static boolean esEmirp (int numero) {
+		int numeroAlReves=alReves(numero);
+		return esPrimo(numero) && esPrimo(numeroAlReves);
+	}
+	public static int cuantasCifras (int numero) {
+		int contador=1;
+		
+		while(numero/10!=0) {
+			contador++;
+			numero/=10;
+		}
+		return contador;
+	}
+	public static int alReves2(int numero) {
+		int exponente=cuantasCifras(numero)-1;
+		int resultado=0;
+		int resto=0;
+		while(numero/10!=0) {
+			resto=numero%10;
+			numero/=10;
+			resultado+=resto*Math.pow(10, exponente);
+			exponente--;
+		}
+		return resultado+numero;
+	}
+	
+	public static double devuelveMedia(int [] numeros) {
+		int suma=0;
+		if(numeros.length!=0) {
+			
+		}
+		for(int i=0; i<numeros.length; i++) {
+			suma+=numeros[i];
+		}
+		return (double)suma/numeros.length;
+		
+	
+	}
+	public static String obtenCadena(String [] cadenas) {
+		return cadenas[new Random().nextInt(cadenas.length)];
+	}
+	public static double calculaMediaPF(int [] numeros) {
+		OptionalDouble resultado = Arrays.stream(numeros).average();
+		double media=0;
+		if(resultado.isPresent()) {
+			media=resultado.getAsDouble();
+		}
+		return media;
+	}
+	
+	public static int devuelveMaximo (int...numeros) {		
+		int maximo;
+		if(numeros.length==0) {
+			maximo=0;
+		
+		} else {
+		maximo=numeros[0];
+		for(int i=1; i<numeros.length;i++) {
+			maximo=Math.max(maximo,  numeros[i]);
+			
+			}
+		}
+		return maximo;
+	}
 
 
 	public static void main(String[] args) {
@@ -306,8 +428,50 @@ public class Ejercicios {
 		//ejercicio16();
 		//ejercicio17();
 		//ejercicio18();
-		ejercicio19();
+		//ejercicio19();
+		/*
+		for(int i=0; i<3; i++)
+		dibujaAsteriscos(5);
+		*/
+		//recibeCadena("Hola", 1, 3);
+		//dibujaCuadrado('s',5);
+		//mostrarTrabajo("Juan", "Camionero", "Cartero", "Barrendero");
+		//mostrarTrabajo("Pedro", "Peluquero", "Cartero", "Fontanero");
+		//mostrarTrabajo("Pepe", "Paseador de perros", "Cartero", "Electricista");
+		//mostrarTrabajo("Pepa");
+		/*
+		if (esPrimo(9)) {
+			System.out.println("Es primo");
+		}
+		System.out.println(esPrimo(9)? "Es primo": "No es primo");
+		*/
+		
+		//System.out.println(alReves(345));
+		/*
+		if(esEmirp(19)) {
+			System.out.println("Es emirp");
+		}else {
+			System.out.println("No es emirp");
+			*/
+		
+		/*
+		System.out.println(cuantasCifras(1211));
+		}
+	
+		*/
+		//System.out.println(alReves2(345));
+		/*
+		int[] numeros = {2,3,4,5,6,1,2};
+		System.out.println(devuelveMedia(numeros));
+		*/
+		/*
+		String [] cadenas = {"Blanco", "Negro", "Azul", "Rojo", "Naranja"};
+		
+		System.out.println( obtenCadena(cadenas));
+		*/
+		System.out.println(devuelveMaximo(1,4,3,7,1,3));
+		System.out.println(devuelveMaximo(1,23,0,7,-1,3));
 
 	}
-
 }
+
