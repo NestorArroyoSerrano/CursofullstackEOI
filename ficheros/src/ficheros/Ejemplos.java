@@ -63,7 +63,7 @@ public class Ejemplos {
 	 */
 
 	public static void leerFicheroJava8(String nombreFichero) throws IOException { //el throws manda el error al main
-		Files.readAllLines(Paths.get(nombreFichero)).forEach(l -> System.out.println(l));
+		Files.readAllLines(Paths.get(nombreFichero)).forEach(l-> System.out.println(l));
 	}
 	/**
 	 * Función que nos lee todo el contenido de un fichero y nos imprime sus líneas por consola
