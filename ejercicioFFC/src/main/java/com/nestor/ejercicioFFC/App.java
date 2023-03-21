@@ -6,20 +6,24 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 
 import com.nestor.ejercicioFFC.entidades.Cliente;
 import com.nestor.ejercicioFFC.entidades.EntidadBancaria;
 import com.nestor.ejercicioFFC.utils.BienvenidaUtils;
+import com.nestor.ejercicioFFC.utils.BusquedaProducto;
 import com.nestor.ejercicioFFC.utils.FechasUtils;
 
 public class App 
 {
-	static final String ruta = "C:\\Users\\Néstor\\Documents\\FullstackEOI\\CursofullstackEOI\\ejercicioFFC\\src\\main\\java\\ficheros";
+	public static final String ruta = "C:\\Users\\Néstor\\Documents\\FullstackEOI\\CursofullstackEOI\\ejercicioFFC\\src\\main\\java\\ficheros";
 	
 	public static List<String> devolverLineasJava8(Path ruta) { // aqui ya no mandas el error al main, aquí en el propio método se ejecuta el error si lo hubiese
 		try { //prueba esto 
@@ -32,9 +36,53 @@ public class App
 		} 
 		
 	}
+	
 	public static void imprimirFecha(String idioma) {
 		System.out.println(FechasUtils.obtenerFechaFormatoLargoPais(idioma));
 	}
+	
+
+	public static String imprimirMenu(ArrayList<String> datos) {
+		
+		String[] resultado = {""};
+		int fechaEscogida = 0;
+		String fecha;
+		ArrayList<String> fechas = new ArrayList<String>();
+    	Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i < datos.size(); i++) {
+			//Recorres y comparas fechas
+			 String datosCliente = datos.get(i);
+	        resultado = datosCliente.split(";");
+	        fecha = resultado[2];
+			for(int j = 0; j < datos.size() ; j++) {
+				//Sacas las demas fechas
+				    datosCliente = datos.get(j);
+			        resultado = datosCliente.split(";");
+			        String fechaComparar = resultado[2];
+				if(fecha != fechaComparar && !fechas.contains(fecha)) {
+					fechas.add(fecha);
+				}
+			}
+			
+		}
+		
+		if(fechas.size() != 0) {
+	        System.out.println("Hay incongruencias con la fecha de nacimiento.");
+	        System.out.println("Por favor, seleccione la suya");
+	        
+	        for(int i = 0; i < fechas.size(); i++) {
+		        System.out.println(i+1 + ": " + fechas.get(i));
+	        }
+	        System.out.println("Fecha escogida: ");	
+	        fechaEscogida = sc.nextInt() - 1;
+
+	        
+		}
+
+		return fechas.get(fechaEscogida);
+	}
+
 	
 	
     public static void main( String[] args )
@@ -43,6 +91,8 @@ public class App
     	FileSystem sistemaFicheros=FileSystems.getDefault();
     	Path rutaFichero; 
     	String[] resultado = {""};
+    	String fechaEscogida;
+    	double saldoTotal;
     	
     	bancos.add("caixa.txt");
     	bancos.add("sabadell.txt");
@@ -82,8 +132,22 @@ public class App
         resultado = datos.split(";");
         BienvenidaUtils bienvenida = new BienvenidaUtils(resultado[3], resultado[1]);
         System.out.println(bienvenida.hello);
-    	
-    
-
+        imprimirFecha(resultado[3]);
+        fechaEscogida = imprimirMenu(datosCliente);
+        System.out.println("Fecha escogida: " + fechaEscogida);
+        
+        
+        double saldo = 0.0;
+        for(int j = 0; j < datosCliente.size(); j++) {
+            resultado = datosCliente.get(j).split(";");
+                saldo += Double.parseDouble(resultado[4]);
+                System.out.println("Saldo total: " + saldo);               
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        int edad = LocalDate.now().getYear() - LocalDate.parse(fechaEscogida, formatter).getYear();
+        String producto = BusquedaProducto.buscarProducto(saldo, edad);
+        System.out.println("Producto: " + producto);
     }
 }
+        
+
