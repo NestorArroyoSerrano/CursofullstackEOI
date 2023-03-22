@@ -15,23 +15,22 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name="clientes")
 public class Cliente implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 	
-	@Id // Dice que es la clave primaria de la tabla
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // Le dé números consecutivos, un auto-numérico
+	private static final long serialVersionUID = 1L;
+
+	@Id  // Dice que es la clave primaria de la tabla
+	@GeneratedValue(strategy=GenerationType.IDENTITY)  // Le de números consecutivos, un auto-numérico
 	private Long id;
 	
 	private String nombre;
 	private String apellido;
 	private String email;
-		
+	
 	@Column(name="create_at")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private LocalDate createAt;
 	
 	public Cliente() {
-		
 		
 	}
 
@@ -91,4 +90,8 @@ public class Cliente implements Serializable {
 	public void setCreateAt(LocalDate createAt) {
 		this.createAt = createAt;
 	}
+	
+	
+	
+
 }
