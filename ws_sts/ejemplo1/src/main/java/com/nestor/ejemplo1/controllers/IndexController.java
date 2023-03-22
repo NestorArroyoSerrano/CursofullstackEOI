@@ -38,7 +38,7 @@ public class IndexController {
 		return "index2";
 	}
 	
-	@GetMapping("/perfil")   // http://localhost:8080/app/index2
+	@GetMapping("/perfil")   // http://localhost:8080/app/perfil
 	public String perfil(Model model) {
 		model.addAttribute("titulo", "Perfil del Usuario");
 		//model.addAttribute("usuario",new Usuario("Fran","García","fran@iessanvicente.com"));
@@ -46,7 +46,7 @@ public class IndexController {
 		return "perfil";
 	}
 	
-	@GetMapping("/listar")   // http://localhost:8080/app/index2
+	@GetMapping("/listar")   // http://localhost:8080/app/listar
 	public String listar(Model model) {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios.add(new Usuario("Fran","García","fran@iessanvicente.com"));
