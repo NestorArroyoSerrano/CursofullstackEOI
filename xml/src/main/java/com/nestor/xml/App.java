@@ -231,14 +231,12 @@ public class App
     		.forEach(e->System.out.println(e));
     	*/
     	List<NoticiaAs> noticias =  devolverNoticiaAs("https://futbol.as.com/rss/futbol/primera.xml");
-    	noticias.forEach(e->System.out.println(e));
-//    	noticias.addAll(devolverNoticiasMarca("https://e00-marca.uecdn.es/rss/futbol/primera-division.xml"));
-//    	noticias.addAll(devolverNoticiasMarca("https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml"));
-//    	noticias.addAll(devolverNoticiasMarca("https://www.informacion.es/rss/section/7034"));
-    	System.out.println("Introduzca el filtro para las noticias:");
-    	String filtro = sc.nextLine();
+    	//noticias.forEach(e->System.out.println(e));
+    	//String filtro = sc.nextLine();
+    	noticias.addAll(devolverNoticiaAs("https://as.com/rss/futbol/copa_del_rey.xml"));
+    	noticias.addAll(devolverNoticiaAs("https://as.com/rss/baloncesto/acb.xml"));
     	noticias.stream()
-    		.filter(e->e.getTitle().contains(filtro))
+    		.filter(e->e.getTitle().contains("Barcelona"))
     		.forEach(e->System.out.println(e.getTitle()));
     	 
     }
