@@ -16,6 +16,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.nestor.xml.entidades.Asignatura;
+import com.nestor.xml.entidades.NoticiaAs;
 import com.nestor.xml.entidades.NoticiaMarca;
 import com.nestor.xml.entidades.NoticiaSensacine;
 import com.nestor.xml.utilidades.InternetUtils;
@@ -157,6 +158,40 @@ public class App
 		return resultado;
 		
 	}
+	public static List<NoticiaAs> devolverNoticiaAs(String web) {
+		List<NoticiaAs> resultado = new ArrayList<>();
+		try {
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(web);  // Comprueba que es un XML valido
+			doc.getDocumentElement().normalize();
+			
+			NodeList nList = doc.getElementsByTagName("item");
+			
+			for (int temp = 0; temp < nList.getLength(); temp++) {  // recorre las asignaturas
+				Node nNode = nList.item(temp);
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					// añado cada asignatura a la lista
+					if(eElement.getElementsByTagName("dc:creator").getLength()>0) {
+						
+					}
+					resultado.add(new NoticiaAs(
+							eElement.getElementsByTagName("title").item(0).getTextContent(),
+							eElement.getElementsByTagName("description").item(0).getTextContent(),
+							(eElement.getElementsByTagName("dc:creator").getLength()>0)?eElement.getElementsByTagName("dc:creator").item(0).getTextContent():"",
+							eElement.getElementsByTagName("guid").item(0).getTextContent(),
+							eElement.getElementsByTagName("pubDate").item(0).getTextContent()					
+							));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
+		
+	}
 
 	
 	
@@ -190,12 +225,21 @@ public class App
     	.forEach(e->System.out.println(e));
     	*/
     	
+    	/*
     	List<String> lineasHtml = InternetUtils.readUrlList("https://https://chollometro.com/");
     	lineasHtml.stream()
     		.forEach(e->System.out.println(e));
-    	
-    	
-    	sc.close();
-    		    	
+    	*/
+    	List<NoticiaAs> noticias =  devolverNoticiaAs("https://futbol.as.com/rss/futbol/primera.xml");
+    	noticias.forEach(e->System.out.println(e));
+//    	noticias.addAll(devolverNoticiasMarca("https://e00-marca.uecdn.es/rss/futbol/primera-division.xml"));
+//    	noticias.addAll(devolverNoticiasMarca("https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml"));
+//    	noticias.addAll(devolverNoticiasMarca("https://www.informacion.es/rss/section/7034"));
+    	System.out.println("Introduzca el filtro para las noticias:");
+    	String filtro = sc.nextLine();
+    	noticias.stream()
+    		.filter(e->e.getTitle().contains(filtro))
+    		.forEach(e->System.out.println(e.getTitle()));
+    	 
     }
 }

@@ -1,6 +1,7 @@
 package com.nestor.springboot.backend.eventos.models.services;
 
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nestor.springboot.backend.eventos.models.dao.IeventoDao;
 import com.nestor.springboot.backend.eventos.models.entity.Evento;
+import com.nestor.springboot.backend.eventos.utilidades.ImageUtils;
 
 @Service
 public class EventoServiceImpl implements IeventoService{
 	
 	@Autowired
 	private IeventoDao eventoDao;
+	
+	private final ImageUtils imageUtils = new ImageUtils();
 
 	@Override
 	@Transactional(readOnly=true)
@@ -31,13 +35,27 @@ public class EventoServiceImpl implements IeventoService{
 	@Override
 	@Transactional
 	public void delete(int id) {
-		eventoDao.deleteById(id);		
+		Evento eventoActual = eventoDao.findById(id).orElse(null);
+		if(eventoActual!=null) {
+			if(eventoActual.getImagen()!=null) {
+				// borrado del fichero de la imagen
+				imageUtils.deleteImage("public", eventoActual.getImagen());
+			}
+			eventoDao.deleteById(id);
+		}
 	}
 
 	@Override
 	@Transactional
-	public Evento save(Evento cliente) {
-		return eventoDao.save(cliente);
+	public Evento save(Evento evento) {		
+		if(evento.getImagen()!=null) {  // me envían imagen desde el front
+			String ruta = imageUtils.saveImageBase64("eventos", evento.getImagen());
+			evento.setImagen(ruta);
+		} else {  // Le quita la imagen en la base datos si llega con null
+			evento.setImagen(null);
+		}
+		return eventoDao.save(evento);  // actualización sobre la base de datos
 	}
+	
 
 }

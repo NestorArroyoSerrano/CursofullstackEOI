@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.fran.ejercicioentidadfinanciera.multilenguaje"},{"l":"com.fran.ejercicioentidadfinanciera.utilidades"}]

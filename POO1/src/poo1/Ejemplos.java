@@ -430,6 +430,7 @@ public class Ejemplos {
 		Persona copia = new Persona(persona3);
 		copia.setNombre("Néstor");
 		
+		/*
 		for(int i = 0; i<personas.size();i++) {
 			if(personas.get(i).equals(copia)) {
 				System.out.println("Persona encontrada en la posición " + i);
@@ -437,11 +438,14 @@ public class Ejemplos {
 				System.out.println("Copia: " + copia);				
 			}
 		}
+		*/
 		
 		int contador = 0;
 		for(Persona persona : personas) {
 			if(persona.equals(copia)) {
 				System.out.println("Persona encontrada en la posición" + contador);
+				System.out.println("Persona encontrada: " + persona);
+				System.out.println("Copia: " + copia);
 			}
 			contador++;
 		}

@@ -141,8 +141,8 @@ public class App
 		    public static void main( String[] args )
 		    {
 		    	//ejemplosListas();
-		    	//ejemploMap();
+		    	ejemploMap();
 		    	//ejemploSet();
-		    	ejercicio1();
+		    	//ejercicio1();
 		    }
 		}
