@@ -18,7 +18,7 @@ public class App
 	
 	public static Scanner sc = new Scanner(System.in);
 
-	public static final String DIRECTORIO = "c:/ficheros/datosbancos";
+	public static final String DIRECTORIO = "C:\\Users\\Néstor\\Documents\\FullstackEOI\\CursofullstackEOI\\ejercicioclases\\src\\main\\java\\ficheros";
 	public static final String FICHERO_SANTANDER = "santander.txt";
 	public static final String FICHERO_SABADELL = "sabadell.txt";
 	public static final String FICHERO_CAIXA = "caixa.txt";
@@ -86,10 +86,10 @@ public class App
 	
     public static void main( String[] args ) throws IOException
     {
-    	crearCuentasBancos();
-    	unirListasCuentas();
-    	eliminarElementoAleatorio();
-    	buscarElementoBorrado();
+    	//crearCuentasBancos();
+    	//unirListasCuentas();
+    	//eliminarElementoAleatorio();
+    	//buscarElementoBorrado();
     	totalesSantander();
     	
     }

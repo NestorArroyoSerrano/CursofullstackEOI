@@ -235,9 +235,12 @@ public class App
     	//String filtro = sc.nextLine();
     	noticias.addAll(devolverNoticiaAs("https://as.com/rss/futbol/copa_del_rey.xml"));
     	noticias.addAll(devolverNoticiaAs("https://as.com/rss/baloncesto/acb.xml"));
+    	System.out.println("Introduzca un filtro");
+    	String filtro = sc.nextLine();
     	noticias.stream()
-    		.filter(e->e.getTitle().contains("Barcelona"))
+    		//.filter(e->e.getTitle().contains("Barcelona"))
+    		.filter(e->e.getTitle().contains(filtro))
     		.forEach(e->System.out.println(e.getTitle()));
-    	 
+    	 sc.close();
     }
 }

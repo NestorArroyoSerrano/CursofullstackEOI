@@ -1,0 +1,46 @@
+package modelo;
+
+public class Horno extends Dispositivo implements IEncenderApagar{
+	int temperatura;
+	boolean estado;
+	
+	
+	public Horno(int temperatura, boolean estado) {
+		this.temperatura = temperatura;
+		this.estado = estado;
+	}
+	
+	public Horno(int temperatura) {
+		this(temperatura, false);
+	}
+	
+	public int getTemperatura() {
+		return temperatura;
+	}
+
+	public void setTemperatura(int temperatura) {
+		this.temperatura = temperatura;
+	}
+
+	public boolean getEncendido() {
+		return estado;
+	}
+	@Override
+	public void encender() {
+		estado=true;
+	}
+
+	@Override
+	public void apagar() {
+		estado=false;
+	}
+	@Override
+	public String toString() {
+		return super.toString()+ " Temperatura:" +temperatura+
+		(estado? " Encendida": " Apagada");
+	}
+
+
+}
+
+

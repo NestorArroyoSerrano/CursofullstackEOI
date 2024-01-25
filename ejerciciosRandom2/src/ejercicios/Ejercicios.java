@@ -118,10 +118,85 @@ public class Ejercicios {
 			
 		}
 	}
+
+	/*
+		Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
+		stringBits("Hello") → "Hlo"
+		stringBits("Hi") → "H"
+		*/
+	
+	public static String nuevoString (String palabra) {
+		
+		StringBuilder resultado = new StringBuilder();
+
+	    for (int i = 0; i < palabra.length(); i += 2) {
+	        resultado.append(palabra.charAt(i));
+	    }
+
+	    return resultado.toString();
+	}
+	
+	public static boolean doubleX(String palabra) {
+		
+		 // Encuentra la posición de la primera aparición de "x"
+	    int index = palabra.indexOf('x');
+
+	    // Verifica si "x" está presente y si el siguiente caracter es también "x"
+	    return index != -1 && index + 1 < palabra.length() && palabra.charAt(index + 1) == 'x';
+	}
+	/*
+	 * 
+		Given a non-empty string like "Code" return a string like "CCoCodCode".	
+		stringSplosion("Code") → "CCoCodCode"
+		stringSplosion("abc") → "aababc"
+		stringSplosion("ab") → "aab"
+	 */
+	
+	public static String stringSplosion(String palabra) {
+		 StringBuilder result = new StringBuilder();
+		    
+		    for (int i = 0; i < palabra.length(); i++) {
+		        result.append(palabra.substring(0, i + 1));
+		    }
+		    
+		    return result.toString();
+		}
+	/*
+	 * Given a string, return the count of the number of times that a substring length 2 
+	 * appears in the string and also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
+	 */
+	
+	public static int last2(String palabra) {
+		 // Asegurarse de que la cadena tenga al menos 2 caracteres
+	    if (palabra.length() < 2) {
+	        return 0;
+	    }
+
+	    // Obtener el substring de los últimos 2 caracteres
+	    String lastTwoChars = palabra.substring(palabra.length() - 2);
+
+	    // Contador para el número de ocurrencias
+	    int count = 0;
+
+	    // Iterar a través de la cadena, excluyendo los últimos 2 caracteres
+	    for (int i = 0; i < palabra.length() - 2; i++) {
+	        // Obtener el substring de longitud 2 en la posición actual
+	        String substring = palabra.substring(i, i + 2);
+
+	        // Verificar si el substring coincide con los últimos 2 caracteres
+	        if (substring.equals(lastTwoChars)) {
+	            count++;
+	        }
+	    }
+
+	    return count;
+	}
+	
 	
 	
 	public static void main(String[] args)throws IOException{
 		//dibujaAsteriscos(5);
+		/*
 		double [] numeros = {12.45, 23.45, 65.76};
 		System.out.println(devuelveMedia(numeros));
 		int veces = apareceSubcadena("cocinando cocos con chocolate", "co");
@@ -132,7 +207,11 @@ public class Ejercicios {
 		List<String> datosDevueltos = devolverLineasJava8(Paths.get("datos", "datos.txt"));
 		if(datosDevueltos!=null)
 			 datosDevueltos.forEach(e->System.out.println(e));
-		
+		System.out.println(nuevoString("Hola"));
+		*/
+		//System.out.println(doubleX("Holaaa"));
+		//System.out.println(stringSplosion("Buenas"));
+		//System.out.println(last2("xxghghxxghgxx"));
 	}
 
 }

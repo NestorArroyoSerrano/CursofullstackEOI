@@ -23,8 +23,8 @@ public class App
 {
 	public static Scanner sc = new Scanner(System.in);
 	public static String dni;
-	public static final String DIRECTORIO = "C:\\Users\\Néstor\\Documents\\FullstackEOI\\CursofullstackEOI\\ejercicioFFC\\src\\main\\java\\ficheros";
-	public static final String FICHERO_PRODUCTOS = "C:\\Users\\Néstor\\Documents\\FullstackEOI\\CursofullstackEOI\\ejercicioFFC\\src\\main\\java\\ficheros";
+	public static final String DIRECTORIO = "c:/ficheros/datosbancos";
+	public static final String FICHERO_PRODUCTOS = "c:/ficheros/productos/productosofertados.txt";
 	public static Multilenguaje ml;
 	public static final String SEPARADOR = ";";
 	public static final int PARTE_NOMBRE = 1;

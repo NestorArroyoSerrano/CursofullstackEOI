@@ -7,9 +7,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 import com.nestor.colecciones.entidades.Persona;
+import com.nestor.colecciones.entidades.Persona2;
 
 public class App 
 {
@@ -112,6 +114,14 @@ public class App
 			personas.add(new Persona("fran", 10000));
 			System.out.println("El número de personas es: " + personas.size());	// 3 Porque en el hash code and equals una persona es igual cuando tiene el mismo nombre.
 		}
+		public static void ejemploSet2() {
+			Set<String> misFrutas = new HashSet<>();
+			misFrutas.add("Plátano");
+			misFrutas.add("Manzana");
+			misFrutas.add("Manzana");
+			misFrutas.add("Ciruela");
+			System.out.println(misFrutas);
+		}
 			
 			/**
 			 * 1. Crea una lista con los números 10, 20, 30 y 40. 
@@ -137,12 +147,83 @@ public class App
 				numeros.forEach(e->System.out.println(e));
 				
 			}
+			public static void ejercicio1b() {
+				List <Integer> numeros = new ArrayList<Integer>(Arrays.asList(10,20,30,40));
+				numeros.add(50);
+				numeros.add(60);
+				numeros.removeIf(e->e==20);
+				numeros.add(1,25);
+				numeros.add(1,26);
+				//numeros.sort(Collections.reverseOrder());
+				//Collections.reverse(numeros);
+				numeros.sort((e1,e2)->e2-e1);
+				numeros.forEach(e->System.out.println(e));
+			}
+			
+			public static void ejercicio3() {
+				Map<Integer, Persona2> personas = new HashMap<>();
+				personas.put(48718930, new Persona2("Néstor", 27));
+				personas.put(48711234, new Persona2("Juan", 34));
+				personas.put(44441111, new Persona2("Pedro", 55));
+				
+				/*
+				for (Map.Entry<Integer, Persona2> entry : personas.entrySet()) {
+				    Integer dni = entry.getKey();
+				    Persona2 persona = entry.getValue();
+				*/
+				personas.forEach((Integer, Persona2) -> System.out.println("El DNI de esta persona es " +Integer + " y esta persona es " + Persona2));
+					
+				}
+			
+			public static void ejercicio4() {
+				List <Integer> numeros = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,7,9,11,13,15,20,22,34));
+				List<Integer> numeros2 = new ArrayList<Integer>(numeros);
+				
+				/*
+				for (int i=0; i<numeros2.size(); i++) {
+					numeros2.set(i, numeros2.get(i)/2);
+				}
+				*/
+				 // Dividir los números por 2 en la lista numeros2
+				 numeros2.replaceAll(numero -> numero / 2);
+				 // Eliminar los números impares de la lista numeros2 usando programación funcional
+			        numeros2.removeIf(numero -> numero % 2 != 0);
+
+		        // Imprimir la lista resultante (numeros2)
+			        numeros2.forEach(System.out::println);
+			    }
+				
+			
+			public static void ejercicio5() {
+				Set<String> cadenas = new HashSet<>(); 
+				Scanner sc = new Scanner(System.in);
+				boolean salir = false;
+				while(!salir) {
+					System.out.println("Dime una palabra: (escribe 'salir' para salir del programa)" );
+					String palabra = sc.nextLine();
+					if(palabra.toLowerCase().equals("salir")){
+						salir=true;
+					}else {
+						if(cadenas.contains(palabra)) {
+							System.out.printf("Palabra %s repetida\n", palabra);
+						} else {
+							cadenas.add(palabra);
+						}
+					}
+				}
+			}
 			
 		    public static void main( String[] args )
 		    {
 		    	//ejemplosListas();
-		    	ejemploMap();
+		    	//ejemploMap();
 		    	//ejemploSet();
+		    	//ejemploSet2();
 		    	//ejercicio1();
+		    	//ejercicio1b();
+		    	//ejercicio3();
+		    	//ejercicio4();
+		    	//ejercicio5();
+		    	
 		    }
 		}

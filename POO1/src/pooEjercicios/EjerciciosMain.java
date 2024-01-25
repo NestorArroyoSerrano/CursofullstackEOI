@@ -62,6 +62,7 @@ public class EjerciciosMain {
 		equipo.addJugador(new Jugador("Fran", 30, 30000));
 		equipo.addJugador(new Jugador("Peter", 18, 20000));
 		equipo.addJugador(new Jugador("Paco", 35, 10000));
+		equipo.addJugador(new Jugador("Ampeter", 25, 30000));
 		equipo.deleteJugador(0);
 		equipo.getJugadores().forEach(e->System.out.println(e));
 		System.out.println("La suma total de los sueldos del equipo es: " + equipo.totalSueldos());

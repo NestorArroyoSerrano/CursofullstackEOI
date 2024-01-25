@@ -235,18 +235,18 @@ public class JsonUtils {
 	/*
 	 * Este es un método estático que se puede utilizar para leer y convertir un objeto en formato JSON desde una URL en línea en un objeto de tipo Java. 
 	 * La descripción detallada del método es la siguiente:
-La declaración del método comienza con "public static <T> T", lo que significa que este método es genérico y toma un parámetro de tipo "T". 
-"T" se refiere a un tipo genérico que se especificará más adelante en el código, y que puede ser cualquier tipo de objeto de Java.
-El nombre del método es "leerObjeto", lo que indica que este método está diseñado para leer y convertir un objeto desde una URL.
-El método tiene dos parámetros: "url" de tipo String, que representa la URL del objeto JSON a leer, y "clase" de tipo Class<T>, 
-que representa la clase de Java a la que se desea convertir el objeto JSON leído.
-Dentro del cuerpo del método, se utiliza la biblioteca Gson para leer y convertir el objeto JSON. 
-Primero, se llama al método "readUrl" de la clase "InternetUtils" para leer el contenido de la URL y devolver una cadena JSON.
-Luego, se utiliza el método "fromJson" de la biblioteca Gson para convertir la cadena JSON en un objeto de la clase especificada en el parámetro "clase". 
-El resultado de la conversión se devuelve como un objeto de tipo "T", que se especificó como el tipo de retorno del método en la declaración.
-Finalmente, el método devuelve el objeto de tipo "T" que representa el objeto JSON convertido.
-En resumen, este método genérico utiliza la biblioteca Gson para leer y convertir un objeto JSON desde una URL en un objeto de la clase especificada y lo devuelve como un objeto de tipo genérico "T".
-
+		La declaración del método comienza con "public static <T> T", lo que significa que este método es genérico y toma un parámetro de tipo "T". 
+		"T" se refiere a un tipo genérico que se especificará más adelante en el código, y que puede ser cualquier tipo de objeto de Java.
+		El nombre del método es "leerObjeto", lo que indica que este método está diseñado para leer y convertir un objeto desde una URL.
+		El método tiene dos parámetros: "url" de tipo String, que representa la URL del objeto JSON a leer, y "clase" de tipo Class<T>, 
+		que representa la clase de Java a la que se desea convertir el objeto JSON leído.
+		Dentro del cuerpo del método, se utiliza la biblioteca Gson para leer y convertir el objeto JSON. 
+		Primero, se llama al método "readUrl" de la clase "InternetUtils" para leer el contenido de la URL y devolver una cadena JSON.
+		Luego, se utiliza el método "fromJson" de la biblioteca Gson para convertir la cadena JSON en un objeto de la clase especificada en el parámetro "clase". 
+		El resultado de la conversión se devuelve como un objeto de tipo "T", que se especificó como el tipo de retorno del método en la declaración.
+		Finalmente, el método devuelve el objeto de tipo "T" que representa el objeto JSON convertido.
+		En resumen, este método genérico utiliza la biblioteca Gson para leer y convertir un objeto JSON desde una URL en un objeto de la clase especificada y lo devuelve como un objeto de tipo genérico "T".
+		
 
 
 
