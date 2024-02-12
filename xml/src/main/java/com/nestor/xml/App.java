@@ -204,7 +204,7 @@ public class App
     		.filter(e->e.getCurso().equals("Segundo"))
     		.forEach(e->System.out.println(e));*/
     	
-    	/*
+    	
     	List<NoticiaMarca> noticias = devolverNoticiasMarca("https://e00-marca.uecdn.es/rss/futbol/futbol-femenino.xml");
     	//noticias.forEach(e->System.out.println(e));
     	noticias.addAll(devolverNoticiasMarca("https://e00-marca.uecdn.es/rss/futbol/primera-division.xml"));
@@ -215,7 +215,7 @@ public class App
     	noticias.stream()
     		.filter(e->e.getTitle().contains(filtro))
     		.forEach(e->System.out.println(e.getTitle()));
-    	*/
+    	
     	
     	/*
     	List<NoticiaSensacine> noticias = devolverNoticiasSensacine("https://www.sensacine.com/rss/noticias.xml");
@@ -230,6 +230,7 @@ public class App
     	lineasHtml.stream()
     		.forEach(e->System.out.println(e));
     	*/
+    	/*
     	List<NoticiaAs> noticias =  devolverNoticiaAs("https://futbol.as.com/rss/futbol/primera.xml");
     	//noticias.forEach(e->System.out.println(e));
     	//String filtro = sc.nextLine();
@@ -242,5 +243,6 @@ public class App
     		.filter(e->e.getTitle().contains(filtro))
     		.forEach(e->System.out.println(e.getTitle()));
     	 sc.close();
+    	 */
     }
 }
