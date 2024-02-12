@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/administrador")
+@RequestMapping("/api")
 public class AdministradorController {
 	
-	@GetMapping("")
+	@GetMapping("/administrador")
 	public String home() {
 		return "administrador/home";
 	}

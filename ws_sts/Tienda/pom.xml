@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.4</version>
+		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nestor.springboot.backend</groupId>
-	<artifactId>spring-ecommerce</artifactId>
+	<artifactId>tienda</artifactId>
 	<version>0.0.1</version>
-	<name>Eventos</name>
-	<description>Curso de Spring proyecto ecommerce</description>
+	<name>Tienda</name>
+	<description>Proyecto tienda</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -42,13 +42,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-    <groupId>javax.persistence</groupId>
-    <artifactId>javax.persistence-api</artifactId>
-    <version>2.2</version>
-</dependency>
-		
 	</dependencies>
 
 	<build>

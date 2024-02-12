@@ -29,6 +29,7 @@ import com.nestor.springboot.backend.eventos.models.services.IeventoService;
 import com.nestor.springboot.backend.eventos.utilidades.ImageUtils;
 
 
+
 @CrossOrigin(origins= {"*"})  // Todas las aplicaciones pueden acceder a los servicios web
 @RestController
 @RequestMapping("/eventos")
@@ -137,7 +138,7 @@ public class EventoRestController {
 		}
 		// No existe el id en la base de datos
 		response.put("mensaje", "El evento no existe en la base de datos");
-		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
 		
 	}
 	
