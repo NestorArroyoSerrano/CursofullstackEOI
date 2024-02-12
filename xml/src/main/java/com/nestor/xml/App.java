@@ -226,7 +226,7 @@ public class App
     	*/
     	
     	/*
-    	List<String> lineasHtml = InternetUtils.readUrlList("https://https://chollometro.com/");
+    	List<String> lineasHtml = InternetUtils.readUrlList("https://https://chollometro.com/"); // Aquí puedes poner la url que quieras
     	lineasHtml.stream()
     		.forEach(e->System.out.println(e));
     	*/
