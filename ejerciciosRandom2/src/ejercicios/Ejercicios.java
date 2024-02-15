@@ -6,8 +6,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Ejercicios {
 
@@ -191,7 +193,29 @@ public class Ejercicios {
 
 	    return count;
 	}
+	public static String invertirPalabras(String cadena) {
+        String[] palabras = cadena.split("\\s+");
+        StringBuilder resultado = new StringBuilder();
+        
+        for (String palabra : palabras) {
+            String palabraInvertida = new StringBuilder(palabra).reverse().toString();
+            resultado.append(palabraInvertida).append(" ");
+        }
+        
+        return resultado.toString().trim();
+    }
+	public static double sumarNumeros(List<Double> numeros) {
+		
+		
+		return numeros.stream().reduce(0.0, Double::sum);
+	}
+	public static void añadeNumero(double numero) {
+		List<Double> numeros = new ArrayList<>();
+		
+		numeros.add(numero);
 	
+	}
+
 	
 	
 	public static void main(String[] args)throws IOException{
@@ -212,6 +236,14 @@ public class Ejercicios {
 		//System.out.println(doubleX("Holaaa"));
 		//System.out.println(stringSplosion("Buenas"));
 		//System.out.println(last2("xxghghxxghgxx"));
+		//System.out.println(invertirPalabras("Hola Mundo"));
+		
+		  List<Double> numeros = new ArrayList<>();
+	        numeros.add(1.5);
+	        numeros.add(2.5);
+	        numeros.add(3.5);
+	        double suma = sumarNumeros(numeros);
+	        System.out.println("La suma de los números es: " + suma);
 	}
 
 }
