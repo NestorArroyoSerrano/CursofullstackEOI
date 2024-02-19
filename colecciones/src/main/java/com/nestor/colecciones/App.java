@@ -23,7 +23,7 @@ public class App
 		List<Integer> numeros2 = new ArrayList<>(12);
 		// Se puede crear una lista a partir de un array
 		Integer[] array = {2, 3, 5};
-		List<Integer> numeros3 = Arrays.asList(array);
+		List<Integer> numeros3 = new ArrayList<>(Arrays.asList(array));
 		// Se puede crear una lista a partir de otra colección
 		List<Integer> numeros4 = new ArrayList<Integer>(numeros2);
 		
